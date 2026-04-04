@@ -5,3 +5,4 @@ def uppercase(str):
         if code >= 97 and code <= 122:
             chc = chr(ord(chc) - 32)
         print("{}".format(chc), end="")
+    print()
