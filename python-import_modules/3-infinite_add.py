@@ -8,5 +8,5 @@ infinity adding
 if __name__ == "__main__":
     total = 0
     for num in sys.argv[1:]:
-        total = total + num
+        total = total + int(num)
     print(total)
