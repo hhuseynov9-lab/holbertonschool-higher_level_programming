@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def best_score(a_dictionary):
     # Əgər lüğət boşdursa və ya None-dırsa
     if not a_dictionary:
