@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Koordinatları olan Square sinfini təyin edən modul.
+Koordinatları və sahə hesablama qabiliyyəti olan Square sinfi.
 """
 
 
@@ -23,7 +23,7 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Ölçünü təyin edir."""
+        """Ölçünü təyin edir və yoxlayır."""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -33,7 +33,7 @@ class Square:
     @property
     def position(self):
         """Koordinatları götürür."""
-        return self.__size_position  # Qeyd: burada ad __position olmalıdır
+        return self.__position
 
     @position.setter
     def position(self, value):
@@ -43,3 +43,21 @@ class Square:
                 not all(i >= 0 for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
+
+    def area(self):
+        """Kvadratın sahəsini qaytarır."""
+        return self.__size ** 2
+
+    def my_print(self):
+        """Kvadratı koordinatlara uyğun çap edir."""
+        if self.__size == 0:
+            print("")
+            return
+
+        # Y oxu (yuxarı boşluqlar)
+        for i in range(self.__position[1]):
+            print("")
+
+        # Kvadratın özü və X oxu (sol boşluqlar)
+        for i in range(self.__size):
+            print(" " * self.__position[0] + "#" * self.__size)
