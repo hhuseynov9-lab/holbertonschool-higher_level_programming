@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Bu modul urllib kitabxanasından istifadə edər�k
+Bu modul urllib kitabxanasından i
 status səhifəsini fetch edir.
 """
 from urllib.request import urlopen
