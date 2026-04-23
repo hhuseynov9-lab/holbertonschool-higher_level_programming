@@ -1,12 +1,15 @@
 #!/usr/bin/python3
-
-from urllib.request import urlopen
+"""
+Bu skript arqument kimi verilən URL-ə sorğu göndərir 
+və cavab başlığındakı 'X-Request-Id' dəyərini çıxarır.
+"""
+import urllib.request
 import sys
 
-url = sys.argv[1]
-request = urllib.request.Request(url)
-if __name__ == "__main__":
 
-    with urlopen("https://intranet.hbtn.io") as response:
-        x-Request-Id = response.getheader('X-Request-Id')
+if __name__ == "__main__":
+    url = sys.argv[1]
+    with urllib.request.urlopen(url) as response:
+        # Dəyişən adında tire istifadə etmək olmaz, alt xətt (_) istifadə et.
+        x_request_id = response.getheader('X-Request-Id')
         print(x_request_id)
