@@ -1,10 +1,16 @@
 #!/usr/bin/python3
+"""
+Bu modul urllib kitabxanasından istifadə edərək 
+status səhifəsini fetch edir.
+"""
 from urllib.request import urlopen
 
+
 if __name__ == "__main__":
-    with urlopen('https://intranet.hbtn.io/status') as response:
-        content = response.read()
+    url = 'https://intranet.hbtn.io/status'
+    with urlopen(url) as response:
+        body = response.read()
         print("Body response:")
-        print("\t- type: {}".format(type(content)))
-        print("\t- content: {}".format(content))
-        print("\t- utf8 content: {}".format(content.decode('utf-8')))
+        print("\t- type: {}".format(type(body)))
+        print("\t- content: {}".format(body))
+        print("\t- utf8 content: {}".format(body.decode('utf-8')))
