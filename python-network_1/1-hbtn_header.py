@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Bu skript arqument kimi verilən URL-ə sorğu göndərir 
+Bu skript arqument kimi verilən URL-ə sorğu göndr
 və cavab başlığındakı 'X-Request-Id' dəyərini çıxarır.
 """
 import urllib.request
