@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-
-'''
-ciqida
-'''
-
+"""Sends a POST request to a given URL with an email parameter"""
 import requests
 import sys
+
 
 if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
-    data = {'email':email}
-    r = requests.get(url, data=data)
+    payload = {'email': email}
+
+    # BURADAKİ .post ÇOX VACİBDİR!
+    r = requests.post(url, data=payload)
     print(r.text)
