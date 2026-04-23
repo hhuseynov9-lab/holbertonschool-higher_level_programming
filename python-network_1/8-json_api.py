@@ -19,7 +19,7 @@ if __name__ == "__main__":
     try:
         # POST sorğusu göndəririk
         r = requests.post(url, data=payload)
-        
+ 
         # Cavabı JSON formatına çevirməyə çalışırıq
         result = r.json()
 
