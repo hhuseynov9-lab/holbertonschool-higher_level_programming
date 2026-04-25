@@ -6,14 +6,14 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
     """HTTP GET müraciətlərini idarə edən sinif"""
 
     def do_GET(self):
-        # 1. Ana səhifə (/) müraciəti
+        # 1. Ana səhifə (/)
         if self.path == '/':
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
 
-        # 2. /data endpoint-i (JSON qaytarır)
+        # 2. /data (JSON)
         elif self.path == '/data':
             self.send_response(200)
             self.send_header("Content-type", "application/json")
@@ -21,14 +21,14 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
-        # 3. /status endpoint-i (Sadəcə OK qaytarır)
+        # 3. /status (OK)
         elif self.path == '/status':
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
 
-        # 4. /info endpoint-i (Tapşırıqda qeyd olunan əlavə məlumat)
+        # 4. /info (Tapşırıq tələbi)
         elif self.path == '/info':
             self.send_response(200)
             self.send_header("Content-type", "application/json")
@@ -41,11 +41,13 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            # Mesajı tapşırıqdakı "Endpoint not found" ilə əvəz etdik
+            self.wfile.write(b"Endpoint not found")
 
-# Serveri işə salma hissəsi
 if __name__ == "__main__":
     PORT = 8000
+    # Adətən bu tapşırıqlarda 'allow_reuse_address' istifadə olunmalıdır ki, error verməsin
+    socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), SimpleAPIHandler) as httpd:
         print(f"Server {PORT} portunda işləyir...")
         httpd.serve_forever()
